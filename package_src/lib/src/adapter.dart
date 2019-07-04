@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:async';
+import 'dart:typed_data';
 import 'options.dart';
 import 'dio_error.dart';
 
@@ -59,7 +60,7 @@ class ResponseBody {
   });
 
   /// The response stream
-  Stream<List<int>> stream;
+  Stream stream;
 
   /// the response headers
   HttpHeaders headers;
