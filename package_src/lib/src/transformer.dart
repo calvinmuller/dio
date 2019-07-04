@@ -101,8 +101,9 @@ class DefaultTransformer extends Transformer {
           response.headers.value(HttpHeaders.contentLengthHeader) ?? "-1");
     }
     Completer completer = new Completer();
-    Stream stream = response.stream.transform(
-        StreamTransformer.fromHandlers(handleData: (data, EventSink sink) {
+    Stream<Uint8List> stream = response.stream.transform<Uint8List>(
+        StreamTransformer<Uint8List, Uint8List>.fromHandlers(
+            handleData: (Uint8List data, EventSink<Uint8List> sink) {
       sink.add(data);
       if (showDownloadProgress) {
         received += data.length;
